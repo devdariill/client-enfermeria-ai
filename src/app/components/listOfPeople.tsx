@@ -22,7 +22,6 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const search = data.get('search')?.toString().toLowerCase() ?? ''
-    console.log('🚀 ~ file: listOfPeople.tsx:25 ~ handleSubmit ~ search:', search)
     if (search !== '' && search.length > 0) {
       const filterPeople = people.filter((item) => item.name.toLowerCase().includes(search))
       setFilterData(filterPeople)

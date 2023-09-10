@@ -1,15 +1,23 @@
 import { NextResponse } from 'next/server'
-import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from 'openai'
+// import { ChatCompletionRequestMessageRoleEnum, Configuration, OpenAIApi } from 'openai'
+// New
+import OpenAI from 'openai'
 
 const infojobsToken = process.env.INFOJOBS_TOKEN ?? ''
 const openaiToken = process.env.OPENAI_TOKEN ?? ''
 
-const configuration = new Configuration({ apiKey: openaiToken })
-const openai = new OpenAIApi(configuration)
+const openai = new OpenAI({
+  apiKey: openaiToken // This is also the default, can be omitted
+})
+// const configuration = new Configuration({ apiKey: openaiToken })
+// const openai = new OpenAIApi(configuration)
 
+// role: .System,ChatCompletionRequestMessageRoleEnum
+// role: 'assistant',
 const INITIAL_MESSAGES = [
   {
-    role: ChatCompletionRequestMessageRoleEnum.System,
+    role: 'system',
+
     content: `Quiero que cuando te pase una descripción de una oferta de trabajo en programación, le des una nota del 1 al 10.
 
     El formato de respuesta JSON será el siguiente:
@@ -48,14 +56,24 @@ export async function GET (request: Request) {
   const description = await getOfferDescriptionById(id)
   console.log(description)
   // TODO : chatgpt
-  const completion = await openai.createChatCompletion({
+  const completion = await openai.chat.completions.create({
     model: 'gpt-3.5-turbo',
-    messages: [...INITIAL_MESSAGES, {
-      role: ChatCompletionRequestMessageRoleEnum.User,
-      content: description
-    }]
+    messages: [
+      {
+        ...INITIAL_MESSAGES,
+        role: 'user',
+        content: description
+      }]
   })
-  const data = completion.data.choices[0].message?.content ?? ''
+  // const completion = await openai.createChatCompletion({
+  //   model: 'gpt-3.5-turbo',
+  //   messages: [...INITIAL_MESSAGES, {
+  //     role: ChatCompletionRequestMessageRoleEnum.User,
+  //     content: description
+  //   }]
+  // })
+  const data = completion.choices[0].message.content ?? ''
+  // const data = completion.data.choices[0].message?.content ?? ''
   let json
   try {
     json = JSON.parse(data)
