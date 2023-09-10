@@ -12,13 +12,13 @@ import {
   TableRow
 } from '@tremor/react'
 import { useRouter } from 'next/navigation'
-import { Fragment, useState } from 'react'
+import { Fragment, useState, type FormEvent, type FormEventHandler } from 'react'
 
 export const ListOfPeople = ({ people }: { people: People[] }) => {
   const router = useRouter()
-  const [filterData, setFilterData] = useState<People[]>()
+  const [filterData, setFilterData] = useState<People[]>(people)
   // const filterPeople = people.filter((item) => item.nursing_records.length > 0)
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
     const search = data.get('search')?.toString().toLowerCase() ?? ''
@@ -32,23 +32,7 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
 
   return (
     <Card className='my-5'>
-      <header className='flex gap-5'>
-        <h1 className='text-2xl font-bold min-w-max'>Ultimos Pacientes {people.length}</h1>
-
-        <form action='' className='w-full flex' onSubmit={handleSubmit}>
-          <label className='flex w-full'>
-            <img src='/search.svg' alt='' />
-            <input
-              type='search'
-              name='search'
-              className='ml-2 bg-white w-full border outline-0 rounded-l-md pl-3'
-              placeholder='Search by name'
-            />
-            <button className='bg-gray-300 px-2 rounded-r-md'>Filter</button>
-          </label>
-        </form>
-
-      </header>
+      <Header length={people.length} handleSubmit={handleSubmit} />
 
       <Table>
         <TableHead>
@@ -78,5 +62,27 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
         </TableBody>
       </Table>
     </Card>
+  )
+}
+
+const Header = ({ length, handleSubmit }: { length: number, handleSubmit: FormEventHandler<HTMLFormElement> }) => {
+  return (
+    <header className='flex gap-5'>
+      <h1 className='text-2xl font-bold min-w-max'>Ultimos Pacientes {length}</h1>
+
+      <form action='' className='w-full flex' onSubmit={handleSubmit}>
+        <label className='flex w-full'>
+          <img src='/search.svg' alt='' />
+          <input
+            type='search'
+            name='search'
+            className='ml-2 bg-white w-full border outline-0 rounded-l-md pl-3'
+            placeholder='Search by name'
+          />
+          <button className='bg-gray-300 px-2 rounded-r-md'>Filter</button>
+        </label>
+      </form>
+
+    </header>
   )
 }
