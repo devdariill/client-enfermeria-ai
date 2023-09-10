@@ -1,12 +1,21 @@
 import Header from '../components/Header'
+import AreaChartCard from './components/Areachart'
+import { BarChart } from './components/Barchart'
+import { BarChartColors } from './components/BarchartColors'
+import CardComponent from './components/Card'
 
 function Page () {
   return (
-    <div>
+    <section className='p-5'>
       <Header />
 
-      Page
-    </div>
+      <div className='grid gap-5'>
+        <CardComponent />
+        <AreaChartCard />
+        <BarChart />
+        <BarChartColors />
+      </div>
+    </section>
   )
 }
 
