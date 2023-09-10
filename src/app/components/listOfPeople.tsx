@@ -1,16 +1,54 @@
 'use client'
 
 import { People } from '@/app/types'
-import { Button, Card, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow } from '@tremor/react'
+import {
+  Button,
+  Card,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeaderCell,
+  TableRow
+} from '@tremor/react'
 import { useRouter } from 'next/navigation'
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 
 export const ListOfPeople = ({ people }: { people: People[] }) => {
   const router = useRouter()
+  const [filterData, setFilterData] = useState<People[]>()
+  // const filterPeople = people.filter((item) => item.nursing_records.length > 0)
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const data = new FormData(event.currentTarget)
+    const search = data.get('search')?.toString().toLowerCase() ?? ''
+    console.log('🚀 ~ file: listOfPeople.tsx:25 ~ handleSubmit ~ search:', search)
+    if (search !== '' && search.length > 0) {
+      const filterPeople = people.filter((item) => item.name.toLowerCase().includes(search))
+      setFilterData(filterPeople)
+    } else {
+      setFilterData(people)
+    }
+  }
+
   return (
     <Card className='my-5'>
-      <header>
-        <h1 className='text-2xl font-bold'>Ultimos Pacientes {people.length}</h1>
+      <header className='flex gap-5'>
+        <h1 className='text-2xl font-bold min-w-max'>Ultimos Pacientes {people.length}</h1>
+
+        <form action='' className='w-full flex' onSubmit={handleSubmit}>
+          <label className='flex w-full'>
+            <img src='/search.svg' alt='' />
+            <input
+              type='search'
+              name='search'
+              className='ml-2 bg-white w-full border outline-0 rounded-l-md pl-3'
+              placeholder='Search by name'
+            />
+            <button className='bg-gray-300 px-2 rounded-r-md'>Filter</button>
+          </label>
+        </form>
+
       </header>
 
       <Table>
@@ -24,18 +62,14 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
         </TableHead>
 
         <TableBody>
-          {people.map(item => (
+          {filterData?.map((item) => (
             <Fragment key={item.patient_id}>
-              <TableRow
-                className='transition-colors cursor-pointer hover:bg-sky-300'
-              >
+              <TableRow className='transition-colors cursor-pointer hover:bg-sky-300'>
                 <TableCell>{item.name}</TableCell>
                 <TableCell>{item.age}</TableCell>
                 <TableCell>{item.diagnosis}</TableCell>
                 <TableCell className='text-center'>
-                  <Button
-                    onClick={() => router.push(`/${item.patient_id}`)}
-                  >
+                  <Button onClick={() => router.push(`/${item.patient_id}`)}>
                     Revisar Historial ({item.nursing_records.length})
                   </Button>
                 </TableCell>
