@@ -25,6 +25,34 @@
         "nurse_name": "Emily Davis",
         "procedure": "Blood Pressure Monitoring",
         "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
+      },
+      {
+        "record_id": 102,
+        "date": "2023-09-11",
+        "nurse_name": "Susan Johnson",
+        "procedure": "Medication Administration",
+        "notes": "Administered hypertension medication as prescribed by the doctor."
+      },
+      {
+        "record_id": 103,
+        "date": "2023-09-12",
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
+      },
+      {
+        "record_id": 102,
+        "date": "2023-09-11",
+        "nurse_name": "Susan Johnson",
+        "procedure": "Medication Administration",
+        "notes": "Administered hypertension medication as prescribed by the doctor."
+      },
+      {
+        "record_id": 103,
+        "date": "2023-09-12",
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
       }
     ]
   },
@@ -42,18 +70,32 @@
         "notes": "Patient's blood glucose levels were stable and within normal range."
       },
       {
-        "record_id": 202,
+        "record_id": 102,
         "date": "2023-09-11",
-        "nurse_name": "Michael Wilson",
-        "procedure": "Insulin Injection",
-        "notes": "Administered insulin as prescribed by the doctor."
+        "nurse_name": "Susan Johnson",
+        "procedure": "Medication Administration",
+        "notes": "Administered hypertension medication as prescribed by the doctor."
       },
       {
-        "record_id": 203,
+        "record_id": 103,
         "date": "2023-09-12",
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
+      },
+      {
+        "record_id": 102,
+        "date": "2023-09-11",
         "nurse_name": "Susan Johnson",
-        "procedure": "Glucose Monitoring",
-        "notes": "Patient's blood glucose levels were slightly elevated. Informed doctor and adjusted medication dosage."
+        "procedure": "Medication Administration",
+        "notes": "Administered hypertension medication as prescribed by the doctor."
+      },
+      {
+        "record_id": 103,
+        "date": "2023-09-12",
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
       }
     ]
   },
@@ -71,11 +113,25 @@
         "notes": "Patient's vital signs were stable and within normal range."
       },
       {
-        "record_id": 303,
+        "record_id": 102,
+        "date": "2023-09-11",
+        "nurse_name": "Susan Johnson",
+        "procedure": "Medication Administration",
+        "notes": "Administered hypertension medication as prescribed by the doctor."
+      },
+      {
+        "record_id": 103,
         "date": "2023-09-12",
-        "nurse_name": "Karen Brown",
-        "procedure": "Vital Signs Monitoring",
-        "notes": "Patient's vital signs were slightly elevated. Informed doctor and adjusted medication dosage."
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
+      },
+      {
+        "record_id": 103,
+        "date": "2023-09-12",
+        "nurse_name": "Emily Davis",
+        "procedure": "Blood Pressure Monitoring",
+        "notes": "Patient's blood pressure readings were slightly elevated. Informed doctor and adjusted medication dosage."
       }
     ]
   },
