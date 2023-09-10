@@ -15,7 +15,7 @@ export default function RootLayout ({
 }) {
   return (
     <html lang='es'>
-      <body className={inter.className}>
+      <body className={inter.className + 'min-h-screen'}>
         <header className='py-10 bg-[#0f8ece]'>
           <h1 className='flex flex-col items-center justify-center text-lg'>
             <img src='/logo.png' alt='' />
