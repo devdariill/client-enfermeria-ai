@@ -2,7 +2,7 @@ import { type NursingRecord } from '@/app/types'
 
 export function Card ({ name, records }: { name: string, records: NursingRecord[] }) {
   return (
-    <section aria-labelledby='feature-five' id='feature-five' className='lg:h-screen bg-[#e8e8e8]'>
+    <section aria-labelledby='feature-five' id='feature-five' className='lg:h-screen '>
       <div className='px-8 py-24 mx-auto lg:px-16 max-w-7xl md:px-12 xl:px-36 lg:flex'>
         <Left name={name} />
         <Right records={records} />
