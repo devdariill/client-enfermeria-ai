@@ -1,14 +1,10 @@
+import data from '@/app/mock/data.json'
+import { ListOfPeople } from './components/listOfPeople'
 
 export default async function Home () {
   return (
     <main className='mx-auto px-4 max-w-[1500px] pb-24'>
-      <Body />
+      <ListOfPeople people={data as any} />
     </main>
-  )
-}
-
-const Body = () => {
-  return (
-    <div>Body</div>
   )
 }
