@@ -1,11 +1,11 @@
 import { type NursingRecord } from '@/app/types'
 
-export function Card ({ nursingRecords }: { nursingRecords: NursingRecord[] }) {
+export function Card ({ name, records }: { name: string, records: NursingRecord[] }) {
   return (
     <section aria-labelledby='feature-five' id='feature-five' className='lg:h-screen bg-[#e8e8e8]'>
       <div className='px-8 py-24 mx-auto lg:px-16 max-w-7xl md:px-12 xl:px-36 lg:flex'>
-        <Left />
-        <Right nursingRecords={nursingRecords} />
+        <Left name={name} />
+        <Right records={records} />
       </div>
     </section>
   )
@@ -32,7 +32,7 @@ const Item = ({ record_id, date, nurse_name, procedure, notes }: NursingRecord) 
   )
 }
 
-const Left = () => {
+const Left = ({ name }: { name: string }) => {
   return (
     <article className='lg:w-1/2'>
       <div className='top-0 pt-8 pb-16 lg:sticky'>
@@ -40,7 +40,7 @@ const Left = () => {
           <div className='lg:pr-24 md:pr-12'>
             <div>
               <p className='text-2xl font-medium tracking-tight text-black sm:text-4xl'>
-                I am a short heading with in a sticky and scrollable section
+                {name}
               </p>
               <p className='max-w-xl mt-4 text-lg tracking-tight text-gray-600'>
                 You are not your mistakes, you are not your struggles, and you are here NOW with
@@ -68,13 +68,13 @@ const Left = () => {
     </article>
   )
 }
-const Right = ({ nursingRecords }: { nursingRecords: NursingRecord[] }) => {
+const Right = ({ records }: { records: NursingRecord[] }) => {
   return (
     <article className='lg:w-1/2'>
       <div className='flex-shrink-0'>
         <div>
           <ul className='grid grid-cols-1 gap-12 mt-6 list-none lg:mt-0 lg:gap-24' role='list'>
-            {nursingRecords?.map((item) => (
+            {records?.map((item) => (
               <Item key={item.record_id} {...item} />
             ))}
           </ul>
