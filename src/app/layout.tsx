@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import Link from 'next/link'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -18,7 +19,9 @@ export default function RootLayout ({
       <body className={inter.className + 'min-h-screen'}>
         <header className='py-10 bg-[#0f8ece]'>
           <h1 className='flex flex-col items-center justify-center text-lg'>
-            <img src='/logo.png' alt='' />
+            <Link href='/'>
+              <img src='/logo.png' alt='' />
+            </Link>
             <strong className='font-semibold tracking-wider capitalize'> Summary for low complexity nursing records. </strong>
           </h1>
         </header>
