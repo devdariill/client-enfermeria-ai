@@ -17,12 +17,12 @@ export default function RootLayout ({
   return (
     <html lang='es'>
       <body className={inter.className + 'min-h-screen'}>
-        <header className='py-10 bg-[#0f8ece]'>
+        <header className='py-10 bg-[#0f8ece] justify-center grid'>
           <h1 className='flex flex-col items-center justify-center text-lg'>
             <Link href='/'>
               <img src='/logo.png' alt='' />
             </Link>
-            <strong className='font-semibold tracking-wider capitalize'> Summary for low complexity nursing records. </strong>
+            <strong className='font-semibold tracking-wider capitalize text-sm'> Summary for low complexity nursing records. </strong>
           </h1>
         </header>
         {children}

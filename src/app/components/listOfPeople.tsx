@@ -13,6 +13,7 @@ import {
 } from '@tremor/react'
 import { useRouter } from 'next/navigation'
 import { Fragment, useState, type FormEvent, type FormEventHandler } from 'react'
+import Header from './Header'
 
 export const ListOfPeople = ({ people }: { people: People[] }) => {
   const router = useRouter()
@@ -32,7 +33,9 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
 
   return (
     <Card className='my-5'>
-      <Header length={people.length} handleSubmit={handleSubmit} />
+      <Header />
+
+      <Info length={people.length} handleSubmit={handleSubmit} />
 
       <Table>
         <TableHead>
@@ -65,7 +68,7 @@ export const ListOfPeople = ({ people }: { people: People[] }) => {
   )
 }
 
-const Header = ({ length, handleSubmit }: { length: number, handleSubmit: FormEventHandler<HTMLFormElement> }) => {
+const Info = ({ length, handleSubmit }: { length: number, handleSubmit: FormEventHandler<HTMLFormElement> }) => {
   return (
     <header className='flex gap-5'>
       <h1 className='text-2xl font-bold min-w-max'>Ultimos Pacientes {length}</h1>
