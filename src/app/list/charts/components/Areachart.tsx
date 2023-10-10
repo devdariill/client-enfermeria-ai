@@ -1,7 +1,7 @@
 'use client'
 import { useStats } from '@/context/statsContext'
 import { AreaChart, Card, Title } from '@tremor/react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 // const chartdata = [
 //   {
@@ -45,37 +45,35 @@ const dataFormatter = (number: number) => {
 
 // Ensure that you call fetchData somewhere in your code to populate the 'toChart' Map.
 const AreaChartCard = () => {
-  const { data, areaChart } = useStats()
+  const { chartData, areaChart } = useStats()
   useEffect(() => {
     areaChart()
   }, [])
 
-  const [chartData, setChartData] = useState<JSONData[]>([])
+  // const [chartData, setChartData] = useState<JSONData[]>([])
 
-  const [loading, setLoading] = useState(true)
+  // const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    if (!data) return
-    const a: JSONData[] = []
+  // useEffect(() => {
+  //   if (!data) return
+  //   const a: JSONData[] = []
 
-    setLoading(true)
-    data.forEach((value, key) => {
-      a.push({ date: key.toString(), terceros: value.terceros, historias: value.historias })
-    })
-    const sorted = a.sort((a, b) => +a.date - +b.date)
-    const namingMonths = sorted.map((item) => {
-      const date = new Date(Date.UTC(2023, +item.date - 1, 1))
-      const monthName = date.toLocaleString('en-US', { month: 'short' })
-      return { date: monthName, terceros: item.terceros, historias: item.historias }
-    })
-    setChartData(namingMonths)
-    setLoading(false)
-  }, [])
+  //   setLoading(true)
+  //   data.forEach((value, key) => {
+  //     a.push({ date: key.toString(), terceros: value.terceros, historias: value.historias })
+  //   })
+  //   const sorted = a.sort((a, b) => +a.date - +b.date)
+  //   const namingMonths = sorted.map((item) => {
+  //     const date = new Date(Date.UTC(2023, +item.date - 1, 1))
+  //     const monthName = date.toLocaleString('en-US', { month: 'short' })
+  //     return { date: monthName, terceros: item.terceros, historias: item.historias }
+  //   })
+  //   setChartData(namingMonths)
+  //   setLoading(false)
+  // }, [data])
 
   // const chartData: JSONData[] = []
   // const categories: string[] = []
-
-  if (loading) return <>Loading...</>
   // console.log('🚀 ~ file: Areachart.tsx:70 ~ AreaChartCard ~ data:', data)
   const actualYear = new Date().getFullYear()
   return (
@@ -94,8 +92,4 @@ const AreaChartCard = () => {
 }
 export default AreaChartCard
 
-interface JSONData {
-  date: string
-  terceros: number
-  historias: number
-}
+

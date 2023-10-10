@@ -3,7 +3,7 @@ import { Card, Flex, Metric, ProgressBar, Text } from '@tremor/react'
 
 const CardComponent = async () => {
   const data = await api.stats.countByTable({ table: 'terceros' })
-  const finalProgress = 100
+  const finalProgress = 10
   const actualProgressPercentage = data / finalProgress * 100
   const actualYear = new Date().getFullYear()
 

@@ -83,7 +83,11 @@ const api = {
       return data
     },
     countByMonth: async ({ table }: { table: string }) => {
-      const res = await fetch(`${URL_BACK}/bymonth?name=${table}`, {
+      const search = `bymonth?name=${table}`
+      const url = `${URL_INFORMES}?search=${search}`
+      // const url = `${URL_BACK}/bymonth?name=${table}`
+      // console.log('🚀 ~ file: api.ts:88 ~ countByMonth: ~ url:', url) // URL UNDEFINED CLIENT != proccess.env.NODE_ENV / process.env.NEXT_PUBLIC_URL_BACK
+      const res = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -117,5 +121,8 @@ const api = {
   }
 }
 export default api
+
+
+const URL_INFORMES = '/api/informes'
 
 const URL_BACK = process.env.NODE_ENV === 'production' ? process.env.URL_BACK! + '/informes' : 'http://localhost:3001/informes'
