@@ -3,8 +3,12 @@ import { axios } from '../axios'
 const PAGE = '/informes'
 const BASE_URL = process.env.NODE_ENV === 'production' ? process.env.URL_BACK! + PAGE : 'http://localhost:3001' + PAGE
 
-export async function getAll ({ search }: { search?: string }): Promise<any> {
-    return await axios<any>(`${BASE_URL}${search}`)  
+export async function getAll ({ search }: { search: string }): Promise<any> {
+  return await axios<any>(`${BASE_URL}${search}`)
+}
+
+export async function getAreaChart (): Promise<any> {
+  return await axios<any>(`${BASE_URL}/area-chart`)
 }
 
 // export async function create (tercero: Tercero): Promise<Tercero> {

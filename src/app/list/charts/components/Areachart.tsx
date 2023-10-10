@@ -44,11 +44,13 @@ const dataFormatter = (number: number) => {
 // let toChart: Map<number, ToChart> = new Map()
 
 // Ensure that you call fetchData somewhere in your code to populate the 'toChart' Map.
+
 const AreaChartCard = () => {
-  const { chartData, areaChart } = useStats()
+  const { loadAreaChartData, chartData } = useStats()
   useEffect(() => {
-    areaChart()
+    loadAreaChartData()
   }, [])
+  // const data = await areaChart()
 
   // const [chartData, setChartData] = useState<JSONData[]>([])
 
@@ -76,6 +78,7 @@ const AreaChartCard = () => {
   // const categories: string[] = []
   // console.log('🚀 ~ file: Areachart.tsx:70 ~ AreaChartCard ~ data:', data)
   const actualYear = new Date().getFullYear()
+  if (!chartData) return <div>Loading...</div>
   return (
     <Card>
       <Title>Registros de historias vs pacientes {actualYear - 1}-{actualYear}</Title>
@@ -91,5 +94,3 @@ const AreaChartCard = () => {
   )
 }
 export default AreaChartCard
-
-

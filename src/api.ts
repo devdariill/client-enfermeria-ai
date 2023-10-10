@@ -116,12 +116,22 @@ const api = {
       const prev = await res2.json()
 
       return [now, prev]
+    },
+    areaChart: async () => {
+      const res = await fetch(`${URL_BACK}/area-chart`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      const data = await res.json()
+      return data
     }
 
   }
 }
 export default api
-
 
 const URL_INFORMES = '/api/informes'
 
