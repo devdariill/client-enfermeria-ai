@@ -1,3 +1,5 @@
+'use server'
+
 import api from '@/api'
 import type { ToChart } from '@/context/statsContext'
 

@@ -10,6 +10,7 @@ import { FirstComponent } from './components/FirstComponent'
 export const dynamic = 'force-dynamic'
 // let id_tercero = -1
 function Page (params: any) {
+  console.log('🚀 ~ file: page.tsx:13 ~ Page ~ params:', params)
   const { seccionB, getSeccionB } = useIndex()
   useEffect(() => {
     getSeccionB({ id: params.searchParams.id })
