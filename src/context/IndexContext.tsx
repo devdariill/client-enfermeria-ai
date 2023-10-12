@@ -71,9 +71,18 @@ export function IndexProvider ({ children }: { children: ReactNode }) {
 
   const [seccionB, setSeccionB] = useState<SeccionB>()
   async function getSeccionB ({ id }: { id: string }) {
+    console.log('🚀 ~ file: IndexContext.tsx:77 ~ getSeccionB ~  id:', id)
+
     const seccionB = await api.get.seccionB({ id })
-    if (!seccionB) return toast.error('No se encontró la seccionB')
-    setSeccionB(seccionB)
+    // const seccionB = null
+
+    if (!seccionB) {
+      const seccionB = seccionesB?.filter(seccionB => seccionB.id === +id)[0]
+      setSeccionB(seccionB)
+      return toast.error('No se encontró la seccionB')
+    } else {
+      setSeccionB(seccionB)
+    }
   }
 
   useSesionLocal()
