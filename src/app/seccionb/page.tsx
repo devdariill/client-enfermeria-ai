@@ -2,20 +2,12 @@
 
 import { useIndex } from '@/context/IndexContext'
 import type { SeccionB } from '@/types'
-import { useEffect } from 'react'
-
 import type { FormEvent, ReactNode } from 'react'
+import { useEffect } from 'react'
 import { toast } from 'sonner'
 import { FirstComponent } from './components/FirstComponent'
 
 export const dynamic = 'force-dynamic'
-
-const Label = ({ name, children }: { name: string, children: ReactNode }) => (
-  <label className='font-semibold capitalize text-center items-center flex flex-col justify-center'>{name.split('_').join(' ')}
-    {children}
-  </label>
-)
-
 // let id_tercero = -1
 function Page (params: any) {
   const { seccionB, getSeccionB } = useIndex()
@@ -64,6 +56,12 @@ function Page (params: any) {
     <View id={params.searchParams.id} name={params.searchParams.name} Input={Input} />
   )
 }
+
+const Label = ({ name, children }: { name: string, children: ReactNode }) => (
+  <label className='font-semibold capitalize text-center items-center flex flex-col justify-center'>{name.split('_').join(' ')}
+    {children}
+  </label>
+)
 
 export default Page
 

@@ -1,10 +1,9 @@
 'use client'
 import api from '@/api'
+import { useSesionLocal } from '@/app/Session/hook/u-mariana'
 import type { HistoriaClinica, Planificacion, SeccionB, Tercero } from '@/types'
-import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
 import type { ReactNode } from 'react'
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useState } from 'react'
 import { Toaster, toast } from 'sonner'
 
 export const IndexContext = createContext< TerceroContextType | undefined >(undefined)
@@ -77,14 +76,7 @@ export function IndexProvider ({ children }: { children: ReactNode }) {
     setSeccionB(seccionB)
   }
 
-  const { data: session } = useSession()
-  const router = useRouter()
-  useEffect(() => {
-    if (session?.user == null) {
-      router.push('/')
-    }
-    console.log('🚀 ~ file: IndexContext.tsx:84 ~ useEffect ~ session:', session)
-  }, [session])
+  useSesionLocal()
 
   return (
     <IndexContext.Provider value={{
