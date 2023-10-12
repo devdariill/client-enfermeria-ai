@@ -83,6 +83,7 @@ export function IndexProvider ({ children }: { children: ReactNode }) {
     if (session?.user == null) {
       router.push('/')
     }
+    console.log('🚀 ~ file: IndexContext.tsx:84 ~ useEffect ~ session:', session)
   }, [session])
 
   return (
