@@ -5,7 +5,7 @@ import { BarChartColors } from './components/BarchartColors'
 import CardComponent from './components/Card'
 
 // export const dynamic = 'force-dynamic'
-export const revalidate = 60 * 10
+export const revalidate = 60
 
 async function Page () {
   const areaChart = await areaChartServer()

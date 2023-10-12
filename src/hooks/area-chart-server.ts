@@ -1,15 +1,27 @@
 'use server'
 
-import api from '@/api'
 import type { ToChart } from '@/context/statsContext'
+
+const countByMonth = async ({ table }: { table: string }) => {
+  'use server'
+  const res = await fetch(`${URL_BACK}/bymonth?name=${table}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+
+  const data = await res.json()
+  return data
+}
 
 export const areaChartServer = async () => {
   // const [tercerosData, historiasData] = await Promise.all([
   //   api.stats.countByMonth({ table: 'terceros' }) as Promise<Data[]>,
   //   api.stats.countByMonth({ table: 'historias_clinicas' }) as Promise<Data[]>
   // ])
-  const tercerosData = await api.stats.countByMonth({ table: 'terceros' }) as Data[]
-  const historiasData = await api.stats.countByMonth({ table: 'historias_clinicas' }) as Data[]
+  const tercerosData = await countByMonth({ table: 'terceros' }) as Data[]
+  const historiasData = await countByMonth({ table: 'historias_clinicas' }) as Data[]
 
   const chartDataMap: Map<number, ToChart> = new Map()
 
@@ -47,3 +59,5 @@ export interface JSONData {
   terceros: number
   historias: number
 }
+
+const URL_BACK = process.env.NODE_ENV === 'production' ? 'https://mackay-bilby-frqr.1.sg-1.fl0.io' + '/informes' : 'http://localhost:3001/informes'
