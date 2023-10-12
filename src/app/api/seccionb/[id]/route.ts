@@ -13,6 +13,7 @@ export async function POST (request: Request, { params: { id } }: { params: { id
 }
 
 export async function GET (_request: Request, { params: { id } }: { params: { id: string } }) {
+  console.log('🚀 ~ file: route.ts:16 ~ GET ~ id:', id)
   try {
     const historia = await getById(id)
     if (historia.id == null) return NextResponse.json({ message: 'History not found' }, { status: 404 })

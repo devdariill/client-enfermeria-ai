@@ -13,8 +13,9 @@ function Page (params: any) {
   console.log('🚀 ~ file: page.tsx:13 ~ Page ~ params:', params)
   const { seccionB, getSeccionB } = useIndex()
   useEffect(() => {
+    if (!params.searchParams.id) return console.log('No hay id')
     getSeccionB({ id: params.searchParams.id })
-  }, [])
+  }, [params.searchParams.id])
   if (!seccionB) return <div>Loading...</div>
   console.log('🚀 ~ file: page.tsx:18 ~ Page ~ seccionB:', seccionB)
 

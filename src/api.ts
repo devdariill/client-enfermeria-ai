@@ -94,8 +94,7 @@ const api = {
       return data
     },
     all: async () => {
-      const URL_BACK = 'https://mackay-bilby-frqr.1.sg-1.fl0.io/informes'
-      const res = await fetch(`${URL_BACK}/all`, {
+      const res = await fetch('https://mackay-bilby-frqr.1.sg-1.fl0.io/informes/all', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
@@ -104,7 +103,7 @@ const api = {
 
       const now = await res.json()
 
-      const res2 = await fetch(`${URL_BACK}/all?prev_year=1`, {
+      const res2 = await fetch('https://mackay-bilby-frqr.1.sg-1.fl0.io/informes/all?prev_year=1', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json'
