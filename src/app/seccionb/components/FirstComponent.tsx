@@ -33,7 +33,7 @@ export const FirstComponent = ({ Input }: { Input: any }) => {
       <Input name='cambio_metodo' />
       <Input name='motivo' />
       <Input name='nuevo_metodo' />
-      <Input name='observaciones' />
+      <Input name='evolucion' />
       <Input name='citologia' />
 
       <Hr widthSm />

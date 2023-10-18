@@ -177,5 +177,5 @@ const Select = ({ name, options, autoFocus = false }: { name: string, options: s
 //   vosec: number
 //   tiempo: number
 
-//   observaciones: string
+//   evolucion: string
 // }

@@ -87,7 +87,7 @@ function View ({ idHistoria, TextArea, Input, name }: { idHistoria: string, Text
 
           <TextArea name='impresion_diagnostica' />
           <TextArea name='tratamiento' />
-          <TextArea name='observaciones' />
+          <TextArea name='evolucion' />
 
           <hr className='col-span-2 p-5' />
 

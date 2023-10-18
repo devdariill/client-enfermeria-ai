@@ -49,7 +49,7 @@ export interface HistoriaClinica {
   id_tercero: number
   firma: number
   acudiemte: string | null
-  observaciones: string | null
+  evolucion: string | null
 }
 
 export interface Usuario {

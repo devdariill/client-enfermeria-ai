@@ -77,7 +77,7 @@ export export interface Planificacion {
   vosec: number
   tiempo: number
 
-  observaciones: string
+  evolucion: string
 }
 
 // Definición de tipos para la tabla Seccion_B
@@ -110,6 +110,6 @@ export interface SeccionB {
   cambio_metodo: string
   motivo: string
   nuevo_metodo: string
-  observaciones: string
+  evolucion: string
   citologia: string
 }
