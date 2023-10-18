@@ -1,7 +1,5 @@
 'use client'
-import { useStats } from '@/context/statsContext'
 import { Card, BarChart as Chart, Title } from '@tremor/react'
-import { useEffect, useState } from 'react'
 
 const dataFormatter = (number: number) => {
   return '# ' + Intl.NumberFormat('us').format(number).toString()
@@ -27,14 +25,12 @@ const dataFormatter = (number: number) => {
 //   }
 // ]
 
-export const BarChartColors = () => {
-  const { colorsChart } = useStats()
-
-  const [data, setData] = useState()
-  useEffect(() => {
-    colorsChart({ setData })
-  }, [])
-  if (!data) return null
+export const BarChartColors = ({ colorsChart: data }: { colorsChart: any }) => {
+  // const [data, setData] = useState()
+  // useEffect(() => {
+  //   colorsChart({ setData })
+  // }, [])
+  // if (!data) return null
   const categories = Object.keys(data[0]).filter((key) => key !== 'name')
   return (
     <Card>

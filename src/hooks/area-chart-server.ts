@@ -1,7 +1,5 @@
 'use server'
 
-import type { ToChart } from '@/context/statsContext'
-
 const countByMonth = async ({ table }: { table: string }) => {
   'use server'
   const res = await fetch(`${URL_BACK}/bymonth?name=${table}`, {
@@ -59,5 +57,6 @@ export interface JSONData {
   terceros: number
   historias: number
 }
+interface ToChart { terceros: number, historias: number}
 
 const URL_BACK = process.env.NODE_ENV === 'production' ? 'https://mackay-bilby-frqr.1.sg-1.fl0.io' + '/informes' : 'http://localhost:3001/informes'
