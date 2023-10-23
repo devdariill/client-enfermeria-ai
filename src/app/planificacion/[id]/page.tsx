@@ -25,7 +25,7 @@ function Pages ({ params: { id }, searchParams: { name } }: { params: { id: stri
   const { getHistoria, historia } = useIndex()
   useEffect(() => {
     getHistoria({ id: idHistoria })
-  }, [])
+  }, [idHistoria])
   if (!historia) return <div>Loading...</div>
 
   // function Pages ({ params, searchParams }: any) {

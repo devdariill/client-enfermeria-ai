@@ -1,8 +1,8 @@
 {
   "extends":[ "next/core-web-vitals","./node_modules/ts-standard/eslintrc.json"],
-  "parserOptions": {
-    "project": "D:/Docs/enfermeria-ai/client/tsconfig.json"
-  },
+  // "parserOptions": {
+  //   "project": "D:/Docs/enfermeria-ai/client/tsconfig.json"
+  // },
   "rules": {
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off",

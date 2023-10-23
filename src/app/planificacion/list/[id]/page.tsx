@@ -12,7 +12,7 @@ export default function Page ({ searchParams: { name }, params: { id } }: { sear
   const idHistoria = id
   useEffect(() => {
     loadPlanificaciones({ id: idHistoria })
-  }, [])
+  }, [idHistoria])
   return (
     <AiView planificaciones={planificaciones} idHistoria={idHistoria} name={name.split('%').join(' ')} />
   )

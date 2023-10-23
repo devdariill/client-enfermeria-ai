@@ -26,11 +26,6 @@ const dataFormatter = (number: number) => {
 // ]
 
 export const BarChartColors = ({ colorsChart: data }: { colorsChart: any }) => {
-  // const [data, setData] = useState()
-  // useEffect(() => {
-  //   colorsChart({ setData })
-  // }, [])
-  // if (!data) return null
   const categories = Object.keys(data[0]).filter((key) => key !== 'name')
   return (
     <Card>

@@ -16,7 +16,7 @@ function Page (params: any) {
   const { planificacion, getPlanificacion } = useIndex()
   useEffect(() => {
     getPlanificacion({ id: idPlanificacion })
-  }, [])
+  }, [idPlanificacion])
   if (!planificacion) return <div>Loading...</div>
 
   const Input = ({ name, type = 'string' }: { name: string, type?: string }) => {

@@ -17,7 +17,7 @@ function Page (params: any) {
   useEffect(() => {
     getHistoria({ id: idHistoria })
     // historia && (id_tercero = historia.id_tercero)
-  }, [])
+  }, [idHistoria])
   if (!historia) return <div>Loading...</div>
 
   const TextArea = ({ name, autoFocus = false, required = false }: { name: string, type?: string, autoFocus?: boolean, required?: boolean }) => (

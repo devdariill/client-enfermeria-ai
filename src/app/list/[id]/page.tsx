@@ -1,5 +1,5 @@
-
 'use client'
+
 import { useIndex } from '@/context/IndexContext'
 import type { HistoriaClinica } from '@/types'
 import Link from 'next/link'
@@ -14,7 +14,7 @@ export default function Page ({ searchParams: { name }, params: { id } }: { sear
   const { historias, loadHistorias } = useIndex()
   useEffect(() => {
     loadHistorias({ id: idTercero })
-  }, [])
+  }, [idTercero])
   return (
     <div className='h-full'>
       <AiView historias={historias} idTercero={idTercero} name={name.split('%').join(' ')} />

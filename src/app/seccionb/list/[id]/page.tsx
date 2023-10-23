@@ -13,7 +13,7 @@ export default function Page ({ searchParams: { name }, params: { id } }: { sear
   console.log('🚀 ~ file: page.tsx:11 ~ Page ~ seccionesB:', seccionesB)
   useEffect(() => {
     loadSeccionesB({ id: idPlanificacion })
-  }, [])
+  }, [idPlanificacion])
   if (!seccionesB) return <div>loading...</div>
   return (
     <AiView seccionesB={seccionesB} id={id} name={name.split('%').join(' ')} />

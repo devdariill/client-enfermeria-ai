@@ -17,7 +17,7 @@ function Pages ({ params: { id } }: { params: { id: string } }) {
       if (tercero.id) { setTercero(tercero) }
     }
     getById()
-  }, [])
+  }, [id])
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
