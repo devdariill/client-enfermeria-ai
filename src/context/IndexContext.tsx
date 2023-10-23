@@ -1,6 +1,5 @@
 'use client'
 import api from '@/api'
-import { useSesionLocal } from '@/app/Session/hook/u-mariana'
 import type { HistoriaClinica, Planificacion, SeccionB, Tercero } from '@/types'
 import type { ReactNode } from 'react'
 import { createContext, useContext, useState } from 'react'
@@ -85,7 +84,6 @@ export function IndexProvider ({ children }: { children: ReactNode }) {
     }
   }
 
-  useSesionLocal()
 
   return (
     <IndexContext.Provider value={{
