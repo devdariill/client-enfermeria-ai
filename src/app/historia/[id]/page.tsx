@@ -74,12 +74,14 @@ const Label = ({ name, children }: { name: string, children: ReactNode }) => (
 )
 const TextArea = ({ name, autoFocus = false, required = false }: { name: string, type?: string, autoFocus?: boolean, required?: boolean }) => (
   <Label name={name}>
-    <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus} defaultValue='a' required={required} />
+    {/* <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus} defaultValue='a' required={required} /> */}
+    <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus}  required={required} />
   </Label>
 )
 const Input = ({ name, type = 'string', autoFocus = false }: { name: string, type?: string, autoFocus?: boolean }) => (
   <Label name={name}>
-    <input type={type} className='w-full py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={type === 'string' ? 'a' : 1} />
+    {/* <input type={type} className='w-full py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={type === 'string' ? 'a' : 1} /> */}
+    <input type={type} className='w-full py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} />
   </Label>
 )
 
