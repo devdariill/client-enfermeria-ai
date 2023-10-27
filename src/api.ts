@@ -24,7 +24,6 @@ const api = {
       const res = await fetch(`/api/historias/${id}`)
       const historia = await res.json() as HistoriaClinica
       if (historia.id == null) return undefined
-      console.log('1🚀 ~ file: api.ts:26 ~ list-terceros : ~ historia:', historia)
       return historia
     },
     parsedHistoria: async ({ id }: { id: string }) => {

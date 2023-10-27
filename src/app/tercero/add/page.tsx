@@ -109,6 +109,6 @@ function Pages () {
 export default Pages
 
 const Input = ({ name, type = 'string', autoFocus = false }: { name: string, type?: string, autoFocus?: boolean }) => (
-  <input type={type} className='py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus}  />
+  <input type={type} className='py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} />
   // <input type={type} className='py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={type === 'string' ? 'a' : 1} />
 )

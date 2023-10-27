@@ -6,10 +6,19 @@ import Programa from '../components/ofertas-academicas'
 const FormToBody = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault()
   const data = new FormData(event.currentTarget)
-  const body = Object.fromEntries(data.entries())
-  console.log('🚀 ~ file: page.tsx:10 ~ FormToBody ~ body:', body)
-  // const message = data.get('message')?.toString() ?? ''
-  // const motivo_consulta = data.get('motivo_consulta')?.toString() ?? ''
+  // const body = Object.fromEntries(data.entries())
+  const entries = Array.from(data.entries())
+  const programa = { programa: '' }
+  const body = Object.fromEntries(entries.map(([name, value]) => {
+    if (name === 'programa1') {
+      programa.programa = value as string
+      return ['programa', value]
+    } else if (name === 'programa2') {
+      return ['programa', `${programa.programa}${(value as string)}`]
+    } else {
+      return [name, value]
+    }
+  }))
   return body
 }
 

@@ -19,25 +19,25 @@ function Page (params: any) {
   }, [idHistoria])
   if (!historia) return <div>Loading...</div>
 
-  const TextArea = ({ name, autoFocus = false, required = false }: { name: string, type?: string, autoFocus?: boolean, required?: boolean }) => (
+  const TextArea = ({ name, autoFocus = false, required = false }: { name: keyof HistoriaClinica, type?: string, autoFocus?: boolean, required?: boolean }) => (
     <Label name={name}>
-      <textarea className='py-1 w-full rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={historia[name as keyof HistoriaClinica] ?? ''} required={required} />
+      <textarea className='py-1 w-full rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={historia[name] ?? ''} required={required} />
     </Label>
   )
-  const Input = ({ name, type = 'string', autoFocus = false }: { name: string, type?: string, autoFocus?: boolean }) => (
+  const Input = ({ name, type = 'string', autoFocus = false }: { name: keyof HistoriaClinica, type?: string, autoFocus?: boolean }) => (
     <Label name={name}>
-      <input type={type} className='w-full py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={type === 'string' ? 'a' : 1} />
+      <input type={type} className='w-full py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultValue={historia[name] ?? ''} />
     </Label>
   )
 
   return (
-    <View idHistoria={idHistoria} name={params.searchParams.name} TextArea={TextArea} Input={Input} />
+    <View idHistoria={idHistoria} name={params.searchParams.name} TextArea={TextArea} Input={Input} programas={historia.programa!} />
   )
 }
 
 export default Page
 
-function View ({ idHistoria, TextArea, Input, name }: { idHistoria: string, TextArea: any, Input: any, name: string }) {
+function View ({ idHistoria, TextArea, Input, name, programas }: { idHistoria: string, TextArea: any, Input: any, name: string, programas: string }) {
   // const router = useRouter()
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -78,7 +78,7 @@ function View ({ idHistoria, TextArea, Input, name }: { idHistoria: string, Text
       </header>
       <form onSubmit={handleSubmit} className='py-10'>
         <div className='grid grid-cols-2 gap-3 mx-auto [&>div]:grid'>
-          <DynamicComponent Input={Input} />
+          <DynamicComponent Input={Input} programas={programas} />
 
           <FirstComponent TextArea={TextArea} />
           <SecondComponent TextArea={TextArea} />
@@ -117,18 +117,29 @@ function View ({ idHistoria, TextArea, Input, name }: { idHistoria: string, Text
 const FormToBody = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault()
   const data = new FormData(event.currentTarget)
-  const body = Object.fromEntries(data.entries())
-  // const message = data.get('message')?.toString() ?? ''
-  // const motivo_consulta = data.get('motivo_consulta')?.toString() ?? ''
+  // const body = Object.fromEntries(data.entries())
+  const entries = Array.from(data.entries())
+  const programa = { programa: '' }
+  const body = Object.fromEntries(entries.map(([name, value]) => {
+    if (name === 'programa1') {
+      programa.programa = value as string
+      return ['programa', value]
+    } else if (name === 'programa2') {
+      return ['programa', `${programa.programa}${(value as string)}`]
+    } else {
+      return [name, value]
+    }
+  }))
+
   return body
 }
 
-const DynamicComponent = ({ Input }: { Input: any }) => {
+const DynamicComponent = ({ Input, programas }: { Input: any, programas: string }) => {
   // programa, codigo, eps, acudiente
   return (
     <>
       {/* <Input name='programa' autoFocus /> */}
-      <Programa />
+      <Programa programas={programas} />
       <Input name='codigo' />
       <Input name='eps' />
       <Input name='acudiente' />
