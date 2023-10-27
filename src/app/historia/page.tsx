@@ -3,11 +3,10 @@
 import { useIndex } from '@/context/IndexContext'
 import type { HistoriaClinica } from '@/types'
 import Link from 'next/link'
-import { useEffect } from 'react'
-
 import type { FormEvent, ReactNode } from 'react'
+import { useEffect } from 'react'
 import { toast } from 'sonner'
-
+import Programa from './components/ofertas-academicas'
 export const dynamic = 'force-dynamic'
 
 // let id_tercero = -1
@@ -128,7 +127,8 @@ const DynamicComponent = ({ Input }: { Input: any }) => {
   // programa, codigo, eps, acudiente
   return (
     <>
-      <Input name='programa' autoFocus />
+      {/* <Input name='programa' autoFocus /> */}
+      <Programa />
       <Input name='codigo' />
       <Input name='eps' />
       <Input name='acudiente' />
@@ -139,7 +139,7 @@ const DynamicComponent = ({ Input }: { Input: any }) => {
 const FirstComponent = ({ TextArea }: { TextArea: any }) => {
   return (
     <>
-      <TextArea name='motivo_consulta' autoFocus required />
+      <TextArea name='motivo_consulta' required />
       <TextArea name='enfermedad_actual' />
       <TextArea name='antecedente_familiar' />
       <TextArea name='antecedente_personal' />

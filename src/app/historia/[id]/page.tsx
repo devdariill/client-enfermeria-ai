@@ -1,11 +1,13 @@
 'use client'
 import type { FormEvent, ReactNode } from 'react'
 import { toast } from 'sonner'
+import Programa from '../components/ofertas-academicas'
 
 const FormToBody = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault()
   const data = new FormData(event.currentTarget)
   const body = Object.fromEntries(data.entries())
+  console.log('🚀 ~ file: page.tsx:10 ~ FormToBody ~ body:', body)
   // const message = data.get('message')?.toString() ?? ''
   // const motivo_consulta = data.get('motivo_consulta')?.toString() ?? ''
   return body
@@ -75,7 +77,7 @@ const Label = ({ name, children }: { name: string, children: ReactNode }) => (
 const TextArea = ({ name, autoFocus = false, required = false }: { name: string, type?: string, autoFocus?: boolean, required?: boolean }) => (
   <Label name={name}>
     {/* <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus} defaultValue='a' required={required} /> */}
-    <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus}  required={required} />
+    <textarea className='py-1 rounded pl-2 outline-gray-300 w-full' name={name} autoFocus={autoFocus} required={required} />
   </Label>
 )
 const Input = ({ name, type = 'string', autoFocus = false }: { name: string, type?: string, autoFocus?: boolean }) => (
@@ -89,7 +91,8 @@ const DynamicComponent = () => {
   // programa, codigo, eps, acudiente
   return (
     <>
-      <Input name='programa' autoFocus />
+      {/* <Input name='programa' autoFocus /> */}
+      <Programa />
       <Input name='codigo' />
       <Input name='eps' />
       <Input name='acudiente' />
@@ -102,7 +105,7 @@ const DynamicComponent = () => {
 const FirstComponent = () => {
   return (
     <>
-      <TextArea name='motivo_consulta' autoFocus required />
+      <TextArea name='motivo_consulta' required />
       <TextArea name='enfermedad_actual' />
       <TextArea name='antecedente_familiar' />
       <TextArea name='antecedente_personal' />

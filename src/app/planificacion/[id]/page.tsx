@@ -17,6 +17,7 @@ const FormToBody = (event: FormEvent<HTMLFormElement>) => {
       return [name, value]
     }
   }))
+  console.log('🚀 ~ file: page.tsx:20 ~ body ~ body:', body)
   return body
 }
 
