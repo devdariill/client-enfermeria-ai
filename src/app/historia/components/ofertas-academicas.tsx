@@ -4,33 +4,31 @@ const OfertasAcademicas = ({ programas }: { programas?: string }) => {
   const [programa1, programa2] = programas?.split('-') ?? ['Seleccione una oferta académica', 'Seleccione una subcategoria']
 
   const [selectedOferta, setSelectedOferta] = useState<string>('Seleccione una oferta académica')
+  const [selectedSubcategoria, setSelectedSubcategoria] = useState<string>('Seleccione una subcategoria')
 
-  const [Loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
     setSelectedOferta(`${programa1}-`)
+    setSelectedSubcategoria(programa2)
     setLoading(false)
-  }, [])
+  }, [programa1, programas, programa2])
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOferta(event.target.value)
   }
 
-  if (Loading) return <div>Loading...</div>
+  if (loading) return <div>Loading...</div>
 
   return (
     <>
       <select className='h-8 my-auto rounded' onChange={handleSelectChange} name='programa1' defaultValue={selectedOferta} required>
         {programa1.includes('Seleccione') && <option value=''>{selectedOferta}</option>}
-        {ofertas.map((oferta, index) => (
-          <option key={index} value={oferta.nombre}>{oferta.nombre}</option>
-        ))}
+        {ofertas.map((oferta, index) => (<option key={index} value={oferta.nombre}>{oferta.nombre}</option>))}
       </select>
-      <select name='programa2' required defaultValue={programa2}>
-        {programa2?.includes('Seleccione') && <option value='programa2'>{programa2}</option>}
-        {ofertas.find((oferta) => {
-          return (oferta.nombre === (selectedOferta))
-        })?.subcategorias.map((subcategoria, index) =>
+      <select name='programa2' required defaultValue={selectedSubcategoria}>
+        {selectedSubcategoria?.includes('Seleccione') && <option value='selectedSubcategoria'>{selectedSubcategoria}</option>}
+        {ofertas.find((oferta) => (oferta.nombre === (selectedOferta)))?.subcategorias.map((subcategoria, index) =>
           (<option key={index}>{subcategoria}</option>))}
       </select>
     </>

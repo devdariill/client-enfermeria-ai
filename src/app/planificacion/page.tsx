@@ -47,7 +47,7 @@ function Page (params: any) {
     )
   }
   const Date = ({ name }: { name: string }) => {
-    const defaultValue = (planificacion[name as keyof Planificacion] as Planificacion['fec_ant_embarazo']).slice(0, 10)
+    const defaultValue = (planificacion[name as keyof Planificacion] as Planificacion['fec_ant_embarazo'])?.slice(0, 10)
     return (
       <Label name={name}>
         <input disabled type='date' className='w-full py-1 rounded pl-2 outline-gray-300' name={name} defaultValue={defaultValue} />
