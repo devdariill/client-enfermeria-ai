@@ -18,6 +18,7 @@ function Page (params: any) {
     getPlanificacion({ id: idPlanificacion })
   }, [idPlanificacion])
   if (!planificacion) return <div>Loading...</div>
+  console.log('🚀 ~ file: page.tsx:17 ~ Page ~ planificacion:', planificacion)
 
   const Input = ({ name, type = 'string' }: { name: string, type?: string }) => {
     const center = type === 'number' ? 'text-center' : ''
@@ -38,7 +39,7 @@ function Page (params: any) {
     )
   }
   const Checkbox = ({ name, autoFocus = false }: { name: string, autoFocus?: boolean }) => {
-    const defaultValue = planificacion[name as keyof Planificacion] === 1
+    const defaultValue = Number(planificacion[name as keyof Planificacion]) === 1
     return (
       <Label name={name}>
         <input disabled type='checkbox' className='py-1 rounded pl-2 outline-gray-300' name={name} autoFocus={autoFocus} defaultChecked={defaultValue} />
