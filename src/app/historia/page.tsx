@@ -6,7 +6,7 @@ import Link from 'next/link'
 import type { FormEvent, ReactNode } from 'react'
 import { useEffect } from 'react'
 import { toast } from 'sonner'
-import Programa from './components/ofertas-academicas'
+import { IfProgramas } from './components/ofertas-academicas'
 export const dynamic = 'force-dynamic'
 
 // let id_tercero = -1
@@ -139,7 +139,7 @@ const DynamicComponent = ({ Input, programas }: { Input: any, programas: string 
   return (
     <>
       {/* <Input name='programa' autoFocus /> */}
-      <Programa programas={programas} />
+      <IfProgramas programas={programas} />
       <Input name='codigo' />
       <Input name='eps' />
       <Input name='acudiente' />

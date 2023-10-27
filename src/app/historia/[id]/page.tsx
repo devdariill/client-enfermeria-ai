@@ -1,7 +1,7 @@
 'use client'
 import type { FormEvent, ReactNode } from 'react'
 import { toast } from 'sonner'
-import Programa from '../components/ofertas-academicas'
+import { IfNoProgramas } from '../components/ofertas-academicas'
 
 const FormToBody = (event: FormEvent<HTMLFormElement>) => {
   event.preventDefault()
@@ -101,7 +101,7 @@ const DynamicComponent = () => {
   return (
     <>
       {/* <Input name='programa' autoFocus /> */}
-      <Programa />
+      <IfNoProgramas />
       <Input name='codigo' />
       <Input name='eps' />
       <Input name='acudiente' />
